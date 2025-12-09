@@ -12,7 +12,7 @@ Automatically generates TypeScript-like type definitions for your Roblox EventMa
 ## Installation
 
 ```bash
-pip install roblox-event-generator
+ python -m pip install git+https://github.com/SirBepy/roblox-event-generator.git
 ```
 
 ## Usage
@@ -27,6 +27,12 @@ Or specify custom paths:
 
 ```bash
 roblox-event-generator --src-dir ./game/src --output ./shared/EventManagerTypes.lua
+```
+
+Note: If your python PATH isnt properly setup, then use the following command
+
+```bash
+python -m roblox_event_generator.cli
 ```
 
 ## How It Works
