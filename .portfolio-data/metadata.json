@@ -1,0 +1,14 @@
+{
+  "title": "Roblox Event Types Generator",
+  "shortDescription": "CLI tool that auto-generates type definitions for Roblox EventManager from Events.lua files.",
+  "type": "Roblox",
+  "status": "finished",
+  "languages": ["Python", "Luau"],
+  "frameworks": [],
+  "tools": ["setuptools"],
+  "liveUrl": null,
+  "mainImage": null,
+  "images": [],
+  "year": 2025,
+  "impressiveness": 2
+}

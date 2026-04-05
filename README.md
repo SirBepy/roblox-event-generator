@@ -1,23 +1,32 @@
+<!-- TODO: one day consider stylized SVG title headers instead of plain markdown headings -->
+
 # Roblox Event Types Generator
 
-Automatically generates TypeScript-like type definitions for your Roblox EventManager by scanning your `Events.lua` files.
+> Automatically generates type definitions for your Roblox EventManager by scanning Events.lua files.
 
-## Features
+![Last Commit](https://img.shields.io/github/last-commit/SirBepy/roblox-event-generator) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![Roblox](https://img.shields.io/badge/Roblox-000000?logo=roblox&logoColor=white)
 
-- 🔍 Automatically scans your Roblox project for `Events.lua` files
-- 📝 Generates precise type definitions for each event (RemoteEvent, BindableEvent, etc.)
-- ✨ Enables full IntelliSense in your IDE
-- 🚀 Works with any Roblox project structure
+---
 
-## Installation
+## About
+
+A Python CLI tool that scans your Roblox project for `Events.lua` files and generates TypeScript-like type definitions for your EventManager. This gives you full IntelliSense in your IDE for all event names and types across services.
+
+Built because manually maintaining event type definitions is tedious and error-prone, especially as the number of services and events grows. This tool automates it by reading event definitions directly from source.
+
+The generator parses `EventTypes.RemoteEvent`, `EventTypes.BindableEvent`, and similar patterns from each service's `Events.lua`, then outputs a single `EventManagerTypes.lua` with strongly-typed definitions for every service.
+
+---
+
+## How to run
+
+Install from GitHub:
 
 ```bash
- python -m pip install git+https://github.com/SirBepy/roblox-event-generator.git
+python -m pip install git+https://github.com/SirBepy/roblox-event-generator.git
 ```
 
-## Usage
-
-Run in your Roblox project root directory:
+Run in your Roblox project root:
 
 ```bash
 roblox-event-generator
@@ -29,36 +38,13 @@ Or specify custom paths:
 roblox-event-generator --src-dir ./game/src --output ./shared/EventManagerTypes.lua
 ```
 
-Note: If your python PATH isnt properly setup, then use the following command
+If your Python PATH isn't properly set up:
 
 ```bash
 python -m roblox_event_generator.cli
 ```
 
-## How It Works
-
-1. Scans `src/ServerScriptService/*/Events.lua` for event definitions
-2. Parses event definitions like:
-   ```lua
-   return EventManager.createServiceEvents("ObbySystem", {
-       Skip = EventTypes.RemoteEvent,
-       GiveItem = EventTypes.BindableEvent,
-   })
-   ```
-3. Generates type-safe definitions in `EventManagerTypes.lua`:
-   ```lua
-   export type EventManagerType = {
-       ObbySystem: {
-           Skip: RemoteEvent,
-           GiveItem: BindableEvent,
-       },
-   }
-   ```
-
-## Requirements
-
-- Python 3.7+
-- Your Events.lua files must use the EventTypes format
+---
 
 ## Project Structure Expected
 
@@ -75,6 +61,8 @@ your-roblox-project/
 │       └── _Libs/
 │           └── EventManagerTypes.lua (generated)
 ```
+
+---
 
 ## License
 
